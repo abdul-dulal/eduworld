@@ -10,7 +10,7 @@ const OrderDetails = ({ order }) => {
       </td>
       <td>{price}</td>
       <td>
-        <AiFillDelete className="text-2xl cursor-pointer " onClick={""} />
+        <AiFillDelete className="text-2xl cursor-pointer " />
       </td>
     </tr>
   );
