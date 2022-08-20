@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Navbar from "../../navbar/Navbar";
 import Loading from "../../shere/Loading";
-import Ratting from "../home/Ratting";
+import Ratting from "./Ratting";
+import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebaseInit";
 
-const Course = () => {
+const Services = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+
+  const [user] = useAuthState(auth);
+  let navigate = useNavigate();
+
   useEffect(() => {
     fetch("http://localhost:3000/get-all")
       .then((res) => res.json())
       .then((data) => {
-        setCourses(data);
+        setCourses(data.slice(0, 4));
         setLoading(true);
       });
   }, []);
+
   return (
     <div>
       {loading ? (
@@ -67,4 +72,4 @@ const Course = () => {
   );
 };
 
-export default Course;
+export default Services;

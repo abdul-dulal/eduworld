@@ -5,14 +5,16 @@ const Faq = () => {
   return (
     <>
       <div>
-        <h1 className=" text-2xl font-semibold text-center">FAQ</h1>
+        <h1 className=" text-3xl font-serif font-medium text-center uppercase mt-10">
+          FAQ
+        </h1>
         <img src={underline} className="block mx-auto mt-3" alt="" />
       </div>
-      <div className="grid grid-cols-2 container gap-10 my-16">
-        <div className="">
-          <img src={man} alt="" />
+      <div className="grid lg:grid-cols-2 md:grid-cols-2 justify-center container gap-10 my-16">
+        <div className="grid items-center justify-center">
+          <img src={man} alt="" className="" />
         </div>
-        <div className="w-10/12 mt-20">
+        <div className="w-10/12 ">
           <div
             tabindex="0"
             class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"

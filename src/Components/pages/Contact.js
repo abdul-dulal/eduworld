@@ -40,14 +40,14 @@ const Contact = () => {
       <div className="  bg-gray-200 contact-form flex  gap-4 justify-center h-screen  lg:px-24 items-center py-7">
         <div className=" px-10 ">
           <form ref={form} onSubmit={sendEmail}>
-            <div className="flex gap-5">
+            <div className="lg:flex md:flex   gap-5">
               <div>
                 <label className="uppercase font-semibold  block"> name</label>
                 <input
                   type="text"
                   name="to_name"
                   id="name"
-                  className=" lg:w-[293px] md:w-[244px] w-3/4 px-2 shadow-lg roundedv  py-4 my-3 placeholder:ml-0 "
+                  className=" lg:w-[293px] md:w-[244px] w-full px-2 shadow-lg roundedv  py-4 my-3 placeholder:ml-0 "
                   placeholder="Name"
                   required
                 />
@@ -58,7 +58,7 @@ const Contact = () => {
                   type="email"
                   email="from_name"
                   id="email"
-                  className=" lg:w-[293px] md:w-[244px] w-3/4 px-2 shadow-lg roundedv  py-4 my-3 placeholder:ml-0 "
+                  className=" lg:w-[293px] md:w-[244px] w-full px-2 shadow-lg roundedv  py-4 my-3 placeholder:ml-0 "
                   placeholder="Email"
                   required
                 />

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
@@ -8,7 +8,7 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import Loading from "../../shere/Loading";
 import auth from "../../../firebaseInit";
-import Navbar from "../../navbar/Navbar";
+
 const Login = () => {
   const {
     register,

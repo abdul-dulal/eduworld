@@ -1,23 +1,12 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import wishlist from "../../assets/icon/wishlist.png";
-import cart from "../../assets/icon/cart.png";
+
 import avatar from "../../assets/icon/avatar.a296afc6.png";
 import { HiMenu } from "react-icons/hi";
-// import useWishlist from "../hooks/useWishlist";
-// import WishlistData from "../hooks/useCart";
-// import auth from "../../Firebase.init";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import Logout from "../login/Logout";
 
 const Submenu = () => {
   const [hide, setHide] = useState(true);
   const [show, setShow] = useState(false);
-  const [cartmodal, setCartmodal] = useState(false);
-  //   const [user] = useAuthState(auth);
-
-  //   const { wishlistInfo } = useWishlist();
-  //   const { cartInfo } = WishlistData();
   const handleHide = () => {
     setHide(!hide);
   };
@@ -52,7 +41,7 @@ const Submenu = () => {
                 </li>
                 <li className="text-sm font-semibold mt-2 ">
                   <NavLink
-                    to={"shop"}
+                    to={"course"}
                     className=""
                     style={({ isActive }) =>
                       isActive
@@ -66,7 +55,27 @@ const Submenu = () => {
                         : { color: "black" }
                     }
                   >
-                    Shop
+                    Courses
+                  </NavLink>
+                </li>
+                <li className="text-sm font-semibold mt-2 ">
+                  <NavLink
+                    to={"signup"}
+                    className=""
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            border: "2px",
+                            padding: "10px",
+                            background: "#7C3AED",
+                            color: "white",
+                            borderRadius: "4px",
+                            marginBottom: "10px",
+                          }
+                        : { color: "black" }
+                    }
+                  >
+                    Signup
                   </NavLink>
                 </li>
                 <li className="text-sm font-semibold mt-2">
@@ -93,41 +102,20 @@ const Submenu = () => {
             " "
           )}
         </div>
-        <div className="ml-[-10px] mt-[-10px]">
+        <div className="ml-[-3px] mt-[-10px]">
           <Link to="/" className="text-3xl ">
-            e-shop
+            EDUWORDL
           </Link>
         </div>
       </div>
       <div className="">
-        <ul className="flex  justify-center gap-7">
-          <div className="relative">
-            <Link to={"wishlist"}>
-              <img src={wishlist} alt="" />
-            </Link>
-            <p className="absolute bottom-5 left-5  bg-gray-900 text-gray-100 w-5 h-5 rounded-full flex items-center justify-center">
-              {/* {wishlistInfo ? wishlistInfo.length : "0"} */}
-            </p>
-          </div>
-          <div className="relative">
-            <li>
-              <img
-                onClick={() => setCartmodal(!cartmodal)}
-                src={cart}
-                className="cursor-pointer"
-                alt=""
-              />
-            </li>
-            <p className="absolute bottom-5 left-4  bg-gray-900 text-gray-100 w-5 h-5 rounded-full flex items-center justify-center">
-              {/* {cartInfo ? cartInfo.length : "0"} */}
-            </p>
-          </div>
+        <ul className="flex  justify-center items-center gap-7">
           <div class="dropdown dropdown-end ">
             <label tabIndex="0" class="">
               <img
                 src={avatar}
                 onClick={handleHide}
-                className="w-8 h-8  cursor-pointer"
+                className="w-8 h-8  ml-24 mb-5 cursor-pointer"
                 alt=""
               />
             </label>
@@ -142,25 +130,12 @@ const Submenu = () => {
                   <li>
                     <Link to={"/my-account"}>My Account</Link>
                   </li>
-                  {/* {user ? (
-                    <Logout />
-                  ) : (
-                    <>
-                      <li>
-                        <Link to={"/register"}>Register</Link>
-                      </li>
-                      <li>
-                        <Link to={"/login"}>Login</Link>
-                      </li>
-                    </>
-                  )} */}
                 </ul>
               </>
             )}
           </div>
         </ul>
       </div>
-      {/* <Cartmodal cartmodal={cartmodal} /> */}
     </div>
   );
 };

@@ -136,20 +136,8 @@ const Navbar = ({ color }) => {
                     class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                   >
                     <li>
-                      <Link to={"/my-account"}>My Account</Link>
+                      <Link to={"/myorder"}>Myorder</Link>
                     </li>
-                    {/* {user ? (
-                      <Logout />
-                    ) : (
-                      <>
-                        <li>
-                          <Link to={"/register"}>Register</Link>
-                        </li>
-                        <li>
-                          <Link to={"/login"}>Login</Link>
-                        </li>
-                      </>
-                    )} */}
                   </ul>
                 </>
               )}

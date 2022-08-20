@@ -1,6 +1,7 @@
 import React from "react";
 import Community from "./Community";
 import Faq from "./Faq";
+import Services from "./Services";
 import Support from "./Support";
 
 const Home = () => {
@@ -11,7 +12,7 @@ const Home = () => {
           <h1 className="text-[#EEEEEE] text-center tracking-widest text-xl lg:pt-36 pt-16">
             ONLINE TEACHING MARKETPLACE &amp; E-LEARNING PLATFORM
           </h1>
-          <h2 className="text-white text-center text-4xl font-bold tracking-wider py-4">
+          <h2 className="text-white text-center lg:text-4xl md:text-2xl font-serif font-bold tracking-wider py-4">
             TEACH ANYTHING, LEARN ANYTIME
           </h2>
           <p className="text-white text-center text-xl">
@@ -23,6 +24,7 @@ const Home = () => {
           </button>
         </div>
       </div>
+      <Services />
       <Support />
       <Community />
       <Faq />
