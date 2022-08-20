@@ -78,7 +78,7 @@ const CheckoutFrom = ({ payment }) => {
         email: user?.email,
       };
 
-      fetch("http://localhost:3000/my-order", {
+      fetch("https://agile-harbor-55958.herokuapp.com/my-order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

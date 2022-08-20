@@ -13,7 +13,7 @@ const Payment = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/price/${id}`)
+    fetch(`https://agile-harbor-55958.herokuapp.com/price/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setPayment(data);
