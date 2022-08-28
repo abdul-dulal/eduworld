@@ -15,7 +15,7 @@ const Navbar = () => {
           <ul className="flex gap-8 items-center justify-center   text-black">
             <li className="text-2xl ">
               <Link to={"/"} className={`uppercase cursor-pointer`}>
-                <img src={logo} alt="" className="w-18 h-8 mt-5" />{" "}
+                <img src={logo} alt="" className="w-18 h-8  mt-2" />{" "}
               </Link>
             </li>
             <li className="text-sm font-semibold mt-2 ">

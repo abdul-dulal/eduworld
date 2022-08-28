@@ -11,6 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 import Loading from "../../shere/Loading";
 import auth from "../../../firebaseInit";
 import Sociallogin from "../../shere/Sociallogin";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const {
@@ -43,6 +44,10 @@ const Login = () => {
   return (
     <>
       <div className=" grid lg:grid-cols-2 md:grid-cols-2 gap-[1px] lg:px-48  bg-gray-300 ">
+        <Helmet>
+          <title>Login</title>
+          <meta name="description" content="Helmet application" />
+        </Helmet>
         <div className="my-6">
           <Sociallogin />
         </div>

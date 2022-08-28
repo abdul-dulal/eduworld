@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { BsFillCloudArrowUpFill } from "react-icons/bs";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import auth from "../../firebaseInit";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 const AddIteam = () => {
   const [user] = useAuthState(auth);
+
+  // const [file, setFile] = useState([]);
+
+  // function uploadSingleFile(e) {
+  //   setFile([...file, URL.createObjectURL(e.target.files[0])]);
+  //   console.log("file", file);
+  // }
+
+  // function deleteFile(e) {
+  //   const s = file.filter((item, index) => index !== e);
+  //   setFile(s);
+  //   console.log(s);
+  // }
+
   const {
     register,
     handleSubmit,
@@ -16,9 +33,9 @@ const AddIteam = () => {
 
   const handleAdd = (data) => {
     const img = data?.img[0];
+    console.log(data);
     const formData = new FormData();
     formData.append("image", img);
-
     const url = `https://api.imgbb.com/1/upload?key=${imgStoreKey}`;
     fetch(url, {
       method: "POST",
@@ -31,9 +48,10 @@ const AddIteam = () => {
             img: result.data.url,
             name: data.name,
             description: data.description,
-            user: user?.email,
+            user: user.email,
+            suppiler: data.suppiler,
             price: data.price,
-            supplier: data.supplier,
+            quantity: data.quantity,
           };
 
           fetch("http://localhost:3000/product/post-product", {
@@ -53,15 +71,41 @@ const AddIteam = () => {
   };
 
   return (
-    <div className="bg-gray-200">
+    <motion.div
+      className="bg-gray-200"
+      initial={{ opacity: 0 }}
+      transition={{ delay: 2 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Helmet>
+        <title>Add Item</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <h1 className="text-2xl font-serif text-center pt-16">Add Product</h1>
+
       <div className=" py-10 flex justify-center items-center">
         <form onSubmit={handleSubmit(handleAdd)} className="">
+          {/* <div>
+            {file.length > 0 &&
+              file.map((item, index) => {
+                return (
+                  <div key={item}>
+                    <img src={item} alt="" />
+                    <button type="button" onClick={() => deleteFile(index)}>
+                      delete
+                    </button>
+                  </div>
+                );
+              })}
+          </div> */}
+
           <label class="w-[370px] flex flex-col items-center px-2 py-4 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer  ease-linear transition-all duration-150">
             <BsFillCloudArrowUpFill className="text-5xl" />
             <span className="font-semibold">Upload a Product</span>
             <input type="file" {...register("img", {})} className="hidden" />
           </label>
+
           <input
             type="text"
             placeholder=" Enter Title"
@@ -129,7 +173,7 @@ const AddIteam = () => {
           <input
             type="text"
             placeholder=" Enter Supplier"
-            {...register("supplier", {
+            {...register("suppiler", {
               required: {
                 value: true,
                 message: "Please Enter Supplier",
@@ -150,7 +194,7 @@ const AddIteam = () => {
           />
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -24,7 +24,7 @@ const Inventorytable = ({ product, hotReload }) => {
       <td>{suppiler}</td>
       <td>{quantity}</td>
       <td onClick={() => handleDelete(_id)}>
-        <AiTwotoneDelete className="cursor-pointer ml-10 block text-2xl text-gray-600" />
+        <AiTwotoneDelete className=" ml-10 block text-2xl text-gray-600 cursor-pointer" />
       </td>
     </tr>
   );

@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/erpAG.png";
 const Footer = () => {
   return (
-    <div className="container mx-auto mt-18 bg-[#272626]">
+    <div className="container mx-auto mt-18 bg-[#272626] mt-14">
       <footer className="p-4  sm:p-6  ">
         <div className="md:flex md:justify-between py-10">
           <div className="mb-6 md:mb-0">

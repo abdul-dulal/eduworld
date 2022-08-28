@@ -8,6 +8,8 @@ import { BsPerson } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLock2Line } from "react-icons/ri";
 import Sociallogin from "../../shere/Sociallogin";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 const Register = () => {
   const [agree, setAgree] = useState(false);
 
@@ -37,7 +39,16 @@ const Register = () => {
 
   return (
     <>
-      <div className=" grid lg:grid-cols-2 md:grid-cols-2 gap-[1px] lg:px-48  bg-gray-300 ">
+      <motion.div
+        className=" grid lg:grid-cols-2 md:grid-cols-2 gap-[1px] lg:px-48  bg-gray-300 "
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Helmet>
+          <title> Signup</title>
+          <meta name="description" content="Helmet application" />
+        </Helmet>
         <div className="my-6">
           <Sociallogin />
         </div>
@@ -165,7 +176,7 @@ const Register = () => {
             </form>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

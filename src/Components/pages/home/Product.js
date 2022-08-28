@@ -7,7 +7,7 @@ const Product = () => {
   useEffect(() => {
     fetch("http://localhost:3000/product/get-all")
       .then((res) => res.json())
-      .then((data) => setProduct(data));
+      .then((data) => setProduct(data.slice(0, 6)));
   }, []);
 
   return (

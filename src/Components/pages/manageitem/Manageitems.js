@@ -2,11 +2,23 @@ import useProuduct from "../../hooks/useProuduct";
 import Loading from "../../shere/Loading";
 import Inventorytable from "./Inventorytable";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 const Manageitems = () => {
   const { products, hotReload } = useProuduct();
 
   return (
-    <div className="bg-[#F8F7F6]">
+    <motion.div
+      className="bg-[#F8F7F6]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Manage Items</title>
+      </Helmet>
       <h1 className="text-3xl font-serif text-center py-5">Manage Inventory</h1>
       <Link
         to="/add-item"
@@ -40,7 +52,7 @@ const Manageitems = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
