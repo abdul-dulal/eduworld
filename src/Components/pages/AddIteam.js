@@ -7,21 +7,22 @@ import "react-toastify/dist/ReactToastify.css";
 import auth from "../../firebaseInit";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
+import { MdOutlineCancel } from "react-icons/md";
 const AddIteam = () => {
   const [user] = useAuthState(auth);
 
-  // const [file, setFile] = useState([]);
+  const [file, setFile] = useState([]);
 
-  // function uploadSingleFile(e) {
-  //   setFile([...file, URL.createObjectURL(e.target.files[0])]);
-  //   console.log("file", file);
-  // }
+  function uploadSingleFile(e) {
+    setFile([...file, URL.createObjectURL(e.target.files[0])]);
+    console.log("file", file);
+  }
 
-  // function deleteFile(e) {
-  //   const s = file.filter((item, index) => index !== e);
-  //   setFile(s);
-  //   console.log(s);
-  // }
+  function deleteFile(e) {
+    const s = file.filter((item, index) => index !== e);
+    setFile(s);
+    // console.log(s);
+  }
 
   const {
     register,
@@ -33,7 +34,7 @@ const AddIteam = () => {
 
   const handleAdd = (data) => {
     const img = data?.img[0];
-    console.log(data);
+    console.log(data.img);
     const formData = new FormData();
     formData.append("image", img);
     const url = `https://api.imgbb.com/1/upload?key=${imgStoreKey}`;
@@ -84,26 +85,45 @@ const AddIteam = () => {
       </Helmet>
       <h1 className="text-2xl font-serif text-center pt-16">Add Product</h1>
 
-      <div className=" py-10 flex justify-center items-center">
+      <div className=" py-10 flex justify-center items-center ">
         <form onSubmit={handleSubmit(handleAdd)} className="">
-          {/* <div>
+          <div>
             {file.length > 0 &&
               file.map((item, index) => {
                 return (
-                  <div key={item}>
-                    <img src={item} alt="" />
-                    <button type="button" onClick={() => deleteFile(index)}>
-                      delete
-                    </button>
+                  <div key={item} className="relative">
+                    <img
+                      src={item}
+                      alt=""
+                      className="w-[365px] h-36  opacity-90 z-50 "
+                    />
+                    <div className="absolute top-0 right-3 ">
+                      <button
+                        type="button"
+                        onClick={() => deleteFile(index)}
+                        className="text-white text-3xl"
+                      >
+                        <MdOutlineCancel />
+                      </button>
+                    </div>
                   </div>
                 );
               })}
-          </div> */}
+          </div>
 
-          <label class="w-[370px] flex flex-col items-center px-2 py-4 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer  ease-linear transition-all duration-150">
+          <label
+            class={`w-[370px] flex flex-col items-center px-2 py-4 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer  ease-linear transition-all duration-150 ${
+              file.length === 1 ? "hidden" : "block"
+            }`}
+          >
             <BsFillCloudArrowUpFill className="text-5xl" />
             <span className="font-semibold">Upload a Product</span>
-            <input type="file" {...register("img", {})} className="hidden" />
+            <input
+              type="file"
+              {...register("img", {})}
+              className="hidden"
+              onChange={uploadSingleFile}
+            />
           </label>
 
           <input

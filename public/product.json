@@ -1,14 +1,6 @@
 [
   {
-    "name": "Activity-Tracking Watch",
-    "price": 25,
-    "quantity": 15,
-    "suppiler": "amazon",
-    "img": "https://2.bp.blogspot.com/-KvQRBME-wNI/W1Cz9wvSheI/AAAAAAAANBk/H3jvII4mSCA6IaxFJRE_Md2rdQ2cC5_EgCLcBGAs/w600/Withings_05.jpg",
-    "description": "The Withings Activité Sapphire is a Swiss-made watch designed in France. It automatically tracks your activity 24/7 & syncs your data using Bluetooth"
-  },
-  {
-    "name": "BIG CROWN POINTER DATE",
+    "name": "BIG CROWN POINTER ",
     "img": "https://reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-8-copyright-768x768.png",
     "price": 35,
     "quantity": 20,
@@ -26,7 +18,7 @@
   {
     "name": "Rolex Dial Watch",
     "img": "https://reprizo.axiomthemes.com/wp-content/uploads/2019/06/product-3-copyright-768x768.png",
-    "description": "Designed by Againstbound for Design by Humans, this tee features grunge geometric drawing of the ocean and the sun in a circle. Lightweight, Classic fit, Double-needle sleeve and bottom hem",
+    "description": "Designed by Againstbound for Design by Humans, this tee features grunge geometric drawing of the ocean and the sun in a circle. Lightweight, Classic fit, Double-needle ",
     "price": 50,
     "quantity": 30,
     "suppiler": "alibaba"
@@ -46,5 +38,13 @@
     "price": 80,
     "quantity": 10,
     "suppiler": "amazon"
+  },
+  {
+    "name": "Activity-Tracking Watch",
+    "price": 25,
+    "quantity": 15,
+    "suppiler": "amazon",
+    "img": "https://2.bp.blogspot.com/-KvQRBME-wNI/W1Cz9wvSheI/AAAAAAAANBk/H3jvII4mSCA6IaxFJRE_Md2rdQ2cC5_EgCLcBGAs/w600/Withings_05.jpg",
+    "description": "The Withings Activité Sapphire is a Swiss-made watch designed in France. It automatically tracks your activity 24/7 & syncs your data using Bluetooth"
   }
 ]
