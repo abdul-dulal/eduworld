@@ -1,31 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import avatar from "../../assets/icon/avatar.a296afc6.png";
 import Submenu from "./Submenu";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebaseInit";
 import Logout from "../shere/Logout";
-
-const Navbar = ({ color }) => {
-  const [hide, setHide] = useState(true);
-
+import logo from "../../assets/logo.png";
+const Navbar = () => {
   const [user] = useAuthState(auth);
 
-  const handleHide = () => {
-    setHide(!hide);
-  };
-
   return (
-    <nav>
-      <div className="flex container justify-between items-center lg:h-16 md:h-16 h-6 invisible md:visible lg:visible  bg-[#035269]">
+    <nav className="">
+      <div className="flex container justify-between  items-center lg:h-20 md:h-16 h-6 invisible  md:visible lg:visible">
         <div className="">
-          <ul
-            className={`flex gap-8 items-center   text-white
-          `}
-          >
-            <li className={`text-2xl`}>
-              <Link to={"/"} className={`uppercase cursor-pointer  ${color}`}>
-                edu-world
+          <ul className="flex gap-8 items-center justify-center   text-black">
+            <li className="text-2xl ">
+              <Link to={"/"} className={`uppercase cursor-pointer`}>
+                <img src={logo} alt="" className="w-18 h-8 mt-5" />{" "}
               </Link>
             </li>
             <li className="text-sm font-semibold mt-2 ">
@@ -39,35 +29,75 @@ const Navbar = ({ color }) => {
                         color: "white",
                         borderRadius: "4px",
                       }
-                    : { color: "white" }
+                    : { color: "black" }
                 }
                 to={"/"}
               >
                 Home
               </NavLink>
             </li>
-            <li className="text-sm font-semibold mt-2 ">
-              <NavLink
-                to={"course"}
-                className=""
-                style={({ isActive }) =>
-                  isActive
-                    ? {
-                        border: "2px",
-                        padding: "10px",
-                        background: "#7C3AED",
-                        color: "white",
-                        borderRadius: "4px",
-                      }
-                    : { color: "white" }
-                }
-              >
-                Courses
-              </NavLink>
-            </li>
+
+            <>
+              <li className="text-sm font-semibold mt-2 ">
+                <NavLink
+                  to={"manage-tems"}
+                  className=""
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          border: "2px",
+                          padding: "10px",
+                          background: "#7C3AED",
+                          color: "white",
+                          borderRadius: "4px",
+                        }
+                      : { color: "black" }
+                  }
+                >
+                  Manage Item
+                </NavLink>
+              </li>
+              <li className="text-sm font-semibold mt-2">
+                <NavLink
+                  to={"add-item"}
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          border: "2px",
+                          padding: "10px",
+                          background: "#7C3AED",
+                          color: "white",
+                          borderRadius: "4px",
+                        }
+                      : { color: "black" }
+                  }
+                >
+                  Add Item
+                </NavLink>
+              </li>
+              <li className="text-sm font-semibold mt-2">
+                <NavLink
+                  to={"my-item"}
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          border: "2px",
+                          padding: "10px",
+                          background: "#7C3AED",
+                          color: "white",
+                          borderRadius: "4px",
+                        }
+                      : { color: "black" }
+                  }
+                >
+                  My Item
+                </NavLink>
+              </li>
+            </>
+
             <li className="text-sm font-semibold mt-2">
               <NavLink
-                to={"contact"}
+                to={"blogs"}
                 style={({ isActive }) =>
                   isActive
                     ? {
@@ -77,10 +107,10 @@ const Navbar = ({ color }) => {
                         color: "white",
                         borderRadius: "4px",
                       }
-                    : { color: "white" }
+                    : { color: "black" }
                 }
               >
-                Contact
+                Blogs
               </NavLink>
             </li>
           </ul>
@@ -101,7 +131,7 @@ const Navbar = ({ color }) => {
                           color: "white",
                           borderRadius: "4px",
                         }
-                      : { color: "white" }
+                      : { color: "black" }
                   }
                   to={"signup"}
                 >
@@ -109,39 +139,6 @@ const Navbar = ({ color }) => {
                 </NavLink>
               </li>
             )}
-            <div class="dropdown dropdown-end ">
-              <label tabIndex="0" class="">
-                {user ? (
-                  <img
-                    src={user.photoURL}
-                    onClick={handleHide}
-                    className="w-8 h-8 rounded-full cursor-pointer"
-                    alt=""
-                  />
-                ) : (
-                  <img
-                    src={avatar}
-                    onClick={handleHide}
-                    className="w-8 h-8  cursor-pointer"
-                    alt=""
-                  />
-                )}
-              </label>
-              {hide ? (
-                ""
-              ) : (
-                <>
-                  <ul
-                    tabindex="0"
-                    class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-                  >
-                    <li>
-                      <Link to={"/myorder"}>Myorder</Link>
-                    </li>
-                  </ul>
-                </>
-              )}
-            </div>
           </ul>
         </div>
       </div>

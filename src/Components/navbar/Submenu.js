@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-import avatar from "../../assets/icon/avatar.a296afc6.png";
 import { HiMenu } from "react-icons/hi";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebaseInit";
+import Logout from "../shere/Logout";
 
 const Submenu = () => {
-  const [hide, setHide] = useState(true);
   const [show, setShow] = useState(false);
-  const handleHide = () => {
-    setHide(!hide);
-  };
+  const [user] = useAuthState(auth);
   const handleShow = () => {
     setShow(!show);
   };
   return (
-    <div className=" grid grid-cols-2 container lg:hidden md:hidden  ">
-      <div className="grid grid-cols-2 relative">
-        <div className="space-y-6">
-          <HiMenu className="text-3xl" onClick={handleShow} />
+    <div className=" grid grid-cols-2 container lg:hidden md:hidden bg-[#035269]">
+      <div className="grid grid-cols-2 relative pt-5">
+        <div className="">
+          <HiMenu className="text-3xl text-white" onClick={handleShow} />
           {show ? (
             <>
               <ul className=" gap-8 space-y-6 ">
@@ -32,7 +31,7 @@ const Submenu = () => {
                             color: "white",
                             borderRadius: "4px",
                           }
-                        : { color: "black" }
+                        : { color: "white" }
                     }
                     to={"/"}
                   >
@@ -41,7 +40,7 @@ const Submenu = () => {
                 </li>
                 <li className="text-sm font-semibold mt-2 ">
                   <NavLink
-                    to={"course"}
+                    to={"manage-item"}
                     className=""
                     style={({ isActive }) =>
                       isActive
@@ -52,15 +51,52 @@ const Submenu = () => {
                             color: "white",
                             borderRadius: "4px",
                           }
-                        : { color: "black" }
+                        : { color: "white" }
                     }
                   >
-                    Courses
+                    Manage Item
+                  </NavLink>
+                </li>
+
+                <li className="text-sm font-semibold mt-2">
+                  <NavLink
+                    to={"add-item"}
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            border: "2px",
+                            padding: "10px",
+                            background: "#7C3AED",
+                            color: "white",
+                            borderRadius: "4px",
+                          }
+                        : { color: "white" }
+                    }
+                  >
+                    Add Item{" "}
+                  </NavLink>
+                </li>
+                <li className="text-sm font-semibold mt-2">
+                  <NavLink
+                    to={"my-item"}
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            border: "2px",
+                            padding: "10px",
+                            background: "#7C3AED",
+                            color: "white",
+                            borderRadius: "4px",
+                          }
+                        : { color: "white" }
+                    }
+                  >
+                    My Item
                   </NavLink>
                 </li>
                 <li className="text-sm font-semibold mt-2 ">
                   <NavLink
-                    to={"signup"}
+                    to={"blogs"}
                     className=""
                     style={({ isActive }) =>
                       isActive
@@ -72,28 +108,10 @@ const Submenu = () => {
                             borderRadius: "4px",
                             marginBottom: "10px",
                           }
-                        : { color: "black" }
+                        : { color: "white" }
                     }
                   >
-                    Signup
-                  </NavLink>
-                </li>
-                <li className="text-sm font-semibold mt-2">
-                  <NavLink
-                    to={"contact"}
-                    style={({ isActive }) =>
-                      isActive
-                        ? {
-                            border: "2px",
-                            padding: "10px",
-                            background: "#7C3AED",
-                            color: "white",
-                            borderRadius: "4px",
-                          }
-                        : { color: "black" }
-                    }
-                  >
-                    Contact
+                    Blogs
                   </NavLink>
                 </li>
               </ul>
@@ -103,37 +121,39 @@ const Submenu = () => {
           )}
         </div>
         <div className="ml-[-3px] mt-[-10px]">
-          <Link to="/" className="text-3xl ">
-            EDUWORDL
+          <Link to="/" className="text-3xl text-white ">
+            Wirehouse
           </Link>
         </div>
       </div>
-      <div className="">
-        <ul className="flex  justify-center items-center gap-7">
-          <div class="dropdown dropdown-end ">
-            <label tabIndex="0" class="">
-              <img
-                src={avatar}
-                onClick={handleHide}
-                className="w-8 h-8  ml-24 mb-5 cursor-pointer"
-                alt=""
-              />
-            </label>
-            {hide ? (
-              ""
+      <div className="mb-10">
+        <ul className="  ml-32 mt-[-8] pt-4">
+          <label tabIndex="0" class="">
+            {user ? (
+              <Logout />
             ) : (
-              <>
-                <ul
-                  tabindex="0"
-                  class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+              <li className="text-sm font-semibold mt-2 ">
+                <NavLink
+                  to={"signup"}
+                  className=""
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          border: "2px",
+                          padding: "10px",
+                          background: "#7C3AED",
+                          color: "white",
+                          borderRadius: "4px",
+                          marginBottom: "10px",
+                        }
+                      : { color: "white" }
+                  }
                 >
-                  <li>
-                    <Link to={"/my-account"}>My Account</Link>
-                  </li>
-                </ul>
-              </>
+                  Signup
+                </NavLink>
+              </li>
             )}
-          </div>
+          </label>
         </ul>
       </div>
     </div>

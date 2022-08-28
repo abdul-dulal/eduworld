@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import ReCAPTCHA from "react-google-recaptcha";
-import {
-  useCreateUserWithEmailAndPassword,
-  useAuthState,
-} from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebaseInit";
 import Loading from "../../shere/Loading";
-import Navbar from "../../navbar/Navbar";
-
+import { BsPerson } from "react-icons/bs";
+import { AiOutlineMail } from "react-icons/ai";
+import { RiLock2Line } from "react-icons/ri";
+import Sociallogin from "../../shere/Sociallogin";
 const Register = () => {
   const [agree, setAgree] = useState(false);
-  const [verified, setVerified] = useState(false);
 
   const {
     register,
@@ -21,9 +18,9 @@ const Register = () => {
     reset,
   } = useForm();
 
-  const [user] = useAuthState(auth);
   const [createUserWithEmailAndPassword, luser, loading] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
   const navigate = useNavigate();
   const onSubmit = async (data) => {
     createUserWithEmailAndPassword(data.email, data.password);
@@ -31,137 +28,142 @@ const Register = () => {
   };
 
   if (luser) {
-    console.log(user);
     return navigate("/");
   }
 
   if (loading) {
     return <Loading />;
   }
-  const hadleCapctha = () => {
-    setVerified(true);
-  };
 
   return (
     <>
-      <div className=" bg-gray-200">
-        <div className="container  w-full flex items-center justify-center py-20">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <label className="font-semibold uppercase block my-3">Email</label>
-
-            <div>
-              <input
-                type="email"
-                placeholder="Enter Your Email"
-                {...register("email", {
-                  required: {
-                    value: true,
-                    message: "Email is required",
-                  },
-                  pattern: {
-                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                    message: "add special digit",
-                  },
-                })}
-                className="input input-bordered input-accent w-full max-w-xs"
-              />
-            </div>
-            <label>
-              {errors.email?.type === "pattern" && (
-                <span className="label-text-alt text-red-500">
-                  {errors.email.message}
-                </span>
-              )}
-            </label>
-            <label>
-              {errors.email?.type === "required" && (
-                <span className="label-text-alt text-red-500 mt-2 text-xl">
-                  {errors.email.message}
-                </span>
-              )}
-            </label>
-            <label>
-              {errors.email?.type === "pattern" && (
-                <span className="label-text-alt text-red-500 ">
-                  {errors.email.message}
-                </span>
-              )}
-            </label>
-            <br />
-            <label className="font-semibold uppercase my-3">Password</label>
-            <div>
-              <input
-                type="password"
-                placeholder="Enter Your Password"
-                {...register(
-                  "password",
-                  {
+      <div className=" grid lg:grid-cols-2 md:grid-cols-2 gap-[1px] lg:px-48  bg-gray-300 ">
+        <div className="my-6">
+          <Sociallogin />
+        </div>
+        <div className="bg-white shadow-lg my-6">
+          <div className="  w-full flex items-center justify-center py-20">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <h1 className="text-2xl font-serif text-center my-5">
+                Sign Into Your Account
+              </h1>
+              <div className="flex relative ">
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  {...register("name", {
                     required: {
                       value: true,
-                      message: "Pawssword is Required",
+                      message: "Name is required",
                     },
-                  },
-                  {
-                    minLength: {
-                      value: 6,
-                      message: "Password must be 6 character",
-                    },
-                  }
+                  })}
+                  className="border-2 border-gray-400 lg:w-96  w-80  h-14 px-3  text-lg my-3 placeholder:text-[#035269] bg-white rounded-md focus:ring "
+                />
+                <BsPerson className="text-black absolute right-3  mt-7 text-2xl" />
+              </div>
+              <label>
+                {errors.name?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.name.message}
+                  </span>
                 )}
-                className="border-2 border-gray-400 w-80 h-12 px-3  my-3 placeholder:text-purple-400 bg-white rounded-md focus:ring"
-              />
-            </div>
-            <label>
-              {errors.password?.type === "required" && (
-                <span className="label-text-alt text-red-500 text-xl">
-                  {errors.password?.message}
-                </span>
-              )}
-            </label>
-            <label className="block">
-              {errors.password?.type === "minLength" && (
-                <span className="label-text-alt text-red-500">
-                  {errors.email?.message}
-                </span>
-              )}
-            </label>
+              </label>
 
-            <div className="my-4">
-              <p className="my-4">RECAPTCHA</p>
-              <ReCAPTCHA
-                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                onChange={hadleCapctha}
-              />
-            </div>
+              <div className="flex relative">
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  {...register("email", {
+                    required: {
+                      value: true,
+                      message: "Email is required",
+                    },
+                    pattern: {
+                      value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                      message: "add special digit",
+                    },
+                  })}
+                  className="border-2 border-gray-400 lg:w-96  w-80  h-14 px-3  my-2 text-lg  placeholder:text-[#035269] bg-white rounded-md focus:ring "
+                />
+                <AiOutlineMail className="text-black absolute right-3 mt-7 text-2xl" />
+              </div>
+              <label>
+                {errors.email?.type === "pattern" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.email.message}
+                  </span>
+                )}
+              </label>
+              <label>
+                {errors.email?.type === "required" && (
+                  <span className="label-text-alt text-red-500 mt-2 text-xl">
+                    {errors.email.message}
+                  </span>
+                )}
+              </label>
+              <label>
+                {errors.email?.type === "pattern" && (
+                  <span className="label-text-alt text-red-500 ">
+                    {errors.email.message}
+                  </span>
+                )}
+              </label>
 
-            <label>
+              <div className=" flex relative">
+                <input
+                  type="password"
+                  required
+                  placeholder="Password"
+                  {...register("password")}
+                  className="border-2 border-gray-400 lg:w-96 md:w-80 w-80  h-14 px-3 my-2   text-lg placeholder:text-[#035269]  bg-white rounded-md focus:ring "
+                />
+                <RiLock2Line className="text-black absolute right-3 mt-7 text-2xl" />
+              </div>
+              <label>
+                {errors.password?.type === "required" && (
+                  <span className="label-text-alt text-red-500 text-xl">
+                    {errors.password?.message}
+                  </span>
+                )}
+              </label>
+              <label className="block">
+                {errors.password?.type === "minLength" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.email?.message}
+                  </span>
+                )}
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  className="my-4"
+                  onClick={() => setAgree(!agree)}
+                />
+                <span
+                  className={`ml-3 ${
+                    agree ? "text-green-700" : "text-red-700"
+                  }`}
+                >
+                  I agree to the privacy policy
+                </span>
+              </label>
+              <br />
               <input
-                type="checkbox"
-                className="my-4"
-                onClick={() => setAgree(!agree)}
+                disabled={!agree}
+                type="submit"
+                value="Register"
+                className={`lg:w-96 w-80 h-14 bg-[#035269] text-white rounded-md ${
+                  !agree ? "cursor-not-allowed" : "cursor-pointer"
+                } `}
               />
-              <span
-                className={`ml-3 ${agree ? "text-green-700" : "text-red-700"}`}
-              >
-                I agree to the privacy policy
-              </span>
-            </label>
-            <br />
-            <input
-              disabled={!verified || !agree}
-              type="submit"
-              value="Register"
-              className={`w-80 h-12 bg-purple-600 text-white rounded-md ${
-                !verified || !agree ? "cursor-not-allowed" : "cursor-pointer"
-              } `}
-            />
-            <p>
-              You Have Already An Account?
-              <Link to={"/login"} className="text-purple-600 ml-2">
-                Login
-              </Link>
-            </p>
-          </form>
+              <p className="text-center mt-5">
+                You Have Already An Account?
+                <Link to={"/login"} className="text-purple-600 ml-2 ">
+                  Login
+                </Link>
+              </p>
+            </form>
+          </div>
         </div>
       </div>
     </>

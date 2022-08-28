@@ -1,6 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link, useLocation } from "react-router-dom";
+import { AiOutlineMail } from "react-icons/ai";
+import { RiLock2Line } from "react-icons/ri";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
@@ -8,6 +10,7 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import Loading from "../../shere/Loading";
 import auth from "../../../firebaseInit";
+import Sociallogin from "../../shere/Sociallogin";
 
 const Login = () => {
   const {
@@ -37,45 +40,45 @@ const Login = () => {
   if (loading || gLoading) {
     return <Loading />;
   }
-
   return (
-    <div className="bg-gray-200">
-      <div className="container  py-20">
-        <div className="w-full flex items-center justify-center">
-          <div>
+    <>
+      <div className=" grid lg:grid-cols-2 md:grid-cols-2 gap-[1px] lg:px-48  bg-gray-300 ">
+        <div className="my-6">
+          <Sociallogin />
+        </div>
+        <div className="bg-white shadow-lg my-6">
+          <div className="  w-full flex items-center justify-center h-screen">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <label className="font-semibold uppercase  block">Email</label>
+              <h1 className="text-2xl font-serif text-center my-5">
+                Log In Into Your Account
+              </h1>
 
-              <div>
+              <label>
+                {errors.name?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.name.message}
+                  </span>
+                )}
+              </label>
+
+              <div className="flex relative">
                 <input
                   type="email"
-                  placeholder="Enter Your Email"
+                  placeholder="Email Address"
                   {...register("email", {
                     required: {
                       value: true,
-                      message: "Please Enter Email",
+                      message: "Email is required",
                     },
                     pattern: {
                       value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                       message: "add special digit",
                     },
                   })}
-                  className="input input-bordered input-accent my-3 w-full max-w-xs"
+                  className="border-2 border-gray-400 lg:w-96  w-80  h-14 px-3  my-2 text-lg  placeholder:text-[#035269] bg-white rounded-md focus:ring "
                 />
+                <AiOutlineMail className="text-black absolute right-3 mt-7 text-2xl" />
               </div>
-              <label>
-                {errors.email?.type === "required" && (
-                  <span className="label-text-alt text-red-500 text-xl">
-                    {errors.email.message}.
-                  </span>
-                )}
-                {errors.email?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500  ">
-                    {errors.email.message}
-                  </span>
-                )}
-              </label>
-
               <label>
                 {errors.email?.type === "pattern" && (
                   <span className="label-text-alt text-red-500">
@@ -83,82 +86,68 @@ const Login = () => {
                   </span>
                 )}
               </label>
-
-              <label className="font-semibold uppercase block my-3">
-                Password
+              <label>
+                {errors.email?.type === "required" && (
+                  <span className="label-text-alt text-red-500 mt-2 text-xl">
+                    {errors.email.message}
+                  </span>
+                )}
               </label>
-              <div>
+              <label>
+                {errors.email?.type === "pattern" && (
+                  <span className="label-text-alt text-red-500 ">
+                    {errors.email.message}
+                  </span>
+                )}
+              </label>
+
+              <div className=" flex relative">
                 <input
                   type="password"
-                  placeholder="Enter Your Password"
-                  {...register(
-                    "password",
-                    {
-                      required: {
-                        value: true,
-                        message: "Pawssword is Required",
-                      },
-                    },
-                    {
-                      minLength: {
-                        value: 6,
-                        message: "Password must be 6 character",
-                      },
-                    }
-                  )}
-                  className="border-2 border-gray-400 w-80 h-12 px-3   placeholder:text-purple-400 bg-white rounded-md focus:ring"
+                  required
+                  placeholder="Password"
+                  {...register("password")}
+                  className="border-2 border-gray-400 lg:w-96 md:w-80 w-80  h-14 px-3 my-2   text-lg placeholder:text-[#035269]  bg-white rounded-md focus:ring "
                 />
+                <RiLock2Line className="text-black absolute right-3 mt-7 text-2xl" />
               </div>
               <label>
                 {errors.password?.type === "required" && (
                   <span className="label-text-alt text-red-500 text-xl">
-                    {errors.password.message}
+                    {errors.password?.message}
+                  </span>
+                )}
+              </label>
+              <label className="block">
+                {errors.password?.type === "minLength" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.email?.message}
                   </span>
                 )}
               </label>
               <label>
-                {errors.password?.type === "minLength" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.email.message}
-                  </span>
-                )}
+                <div className="flex justify-between my-3">
+                  <p>Remember Me</p>
+                  <p>Forget Password?</p>
+                </div>
               </label>
-
-              <div className="flex justify-between my-3">
-                <p>Remember Me</p>
-                <p>Forget Password?</p>
-              </div>
-
+              <br />
               <input
                 type="submit"
-                value="Login"
-                className={`w-80 h-12 bg-purple-600 text-white rounded-md mt-3 cursor-pointer 
-`}
+                value="Register"
+                className={`lg:w-96 w-80 h-14 bg-[#035269] text-white rounded-md cursor-pointer `}
               />
-              <p className="text-xl text-red-700">{errorElement.slice(16)}</p>
-              <div class="divider">OR</div>
+              <p className="text-center mt-4">
+                Don't have an account? Register here
+                <Link to={"/signup"} className="text-purple-600 ml-2">
+                  Login
+                </Link>
+              </p>
             </form>
           </div>
         </div>
-
-        <div className=" lg:ml-[475px] md:ml-[185px] ml-8">
-          <button
-            onClick={() => signInWithGoogle()}
-            className="flex justify-center items-center  text-black bg-white shadow-lg border-2  uppercase h-14 input input-bordered input-accent w-full max-w-xs"
-          >
-            <FcGoogle className="text-3xl" />
-            <span className="ml-4 font-semibold">google</span>
-          </button>
-        </div>
-        <p className="text-center mt-5">
-          Don’t have an account?
-          <Link to={"/signup"} className="text-purple-600 ml-2">
-            Signup{" "}
-          </Link>
-        </p>
       </div>
-    </div>
+    </>
   );
 };
-
 export default Login;
