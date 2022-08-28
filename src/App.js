@@ -17,7 +17,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      {/* https://agile-harbor-55958.herokuapp.com/get-all" */}
+      {/* http://localhost:3000/get-all" */}
 
       <Routes>
         <Route path="/" element={<Home />} />

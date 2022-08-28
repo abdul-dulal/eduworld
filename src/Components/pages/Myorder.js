@@ -8,9 +8,7 @@ const Myorder = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(
-      `https://agile-harbor-55958.herokuapp.com/my-order?email=${user?.email}`
-    )
+    fetch(`http://localhost:3000/my-order?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, []);

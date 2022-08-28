@@ -17,7 +17,7 @@ const Inventory = () => {
   } = useForm();
   useEffect(() => {
     axios.get(`http://localhost:3000/product/single/${id}`).then((res) => {
-      // setInvetory(res.data);
+      setInvetory(res.data);
       console.log();
       setLoading(true);
     });
@@ -35,6 +35,7 @@ const Inventory = () => {
       body: JSON.stringify(updateQuantity),
     });
   };
+
   const onSubmit = (data) => {
     let quantity = parseFloat(data.number);
     const upQuantity = {
@@ -50,8 +51,8 @@ const Inventory = () => {
       },
       body: JSON.stringify(upQuantity),
     });
+    reset();
   };
-  reset();
 
   return (
     <div className="bg-gray-200">
@@ -61,7 +62,7 @@ const Inventory = () => {
 
       <div className="container flex flex-wrap gap-10">
         <div>
-          <form onSubmit={handleSubmit()}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <input
               type="number"
               placeholder="Please Enter Number"
@@ -81,9 +82,9 @@ const Inventory = () => {
             <input
               type="submit"
               value="Add Quantity"
-              className={`border-2  border-gray-600 h-14 w-32 cursor-pointer text-gray-600 font-semibold rounded mt-4 
-                  
-                `}
+              className={`border-2  border-gray-600 h-14 w-32 cursor-pointer text-gray-600 font-semibold rounded mt-4
+
+      `}
             />
           </form>
         </div>
