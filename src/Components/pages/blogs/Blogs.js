@@ -3,6 +3,7 @@ import axios from "axios";
 import BlogsDetails from "./BlogsDetails";
 import Loading from "../../shere/Loading";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 const Blogs = () => {
   const [blogs, setBlog] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,6 +21,10 @@ const Blogs = () => {
       transition={{ delay: 1 }}
       exit={{ opacity: 0 }}
     >
+      <Helmet>
+        <title>Blogs</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <div></div>
       {loading ? (
         <div className="container grid lg:grid-cols-3 md:grid-cols-2 ">

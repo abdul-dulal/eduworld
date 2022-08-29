@@ -10,6 +10,7 @@ import { RiLock2Line } from "react-icons/ri";
 import Sociallogin from "../../shere/Sociallogin";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
+import { toast } from "react-toastify";
 const Register = () => {
   const [agree, setAgree] = useState(false);
 
@@ -26,6 +27,7 @@ const Register = () => {
   const navigate = useNavigate();
   const onSubmit = async (data) => {
     createUserWithEmailAndPassword(data.email, data.password);
+
     reset();
   };
 

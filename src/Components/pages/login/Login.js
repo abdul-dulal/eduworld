@@ -12,6 +12,7 @@ import Loading from "../../shere/Loading";
 import auth from "../../../firebaseInit";
 import Sociallogin from "../../shere/Sociallogin";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Login = () => {
   const {
@@ -23,7 +24,6 @@ const Login = () => {
   let errorElement = "";
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
   const navigate = useNavigate();
   let location = useLocation();
@@ -31,14 +31,17 @@ const Login = () => {
   if (error) {
     errorElement = error.message;
   }
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    const email = data.email;
     signInWithEmailAndPassword(data.email, data.password);
+    const res = await axios.post(`http://localhost:3000/user/login`, { email });
+    localStorage.setItem("access", res.data);
   };
-  if (user || gUser) {
+  if (user) {
     navigate(from, { replace: true });
   }
 
-  if (loading || gLoading) {
+  if (loading) {
     return <Loading />;
   }
   return (
