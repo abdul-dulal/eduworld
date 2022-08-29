@@ -33,7 +33,8 @@ const AddIteam = () => {
   const imgStoreKey = "62b824b8fcaa7767525638a0ce8e3079";
 
   const handleAdd = (data) => {
-    const img = data?.img[0];
+    console.log(data);
+    const img = data.img[0];
     console.log(data.img);
     const formData = new FormData();
     formData.append("image", img);
@@ -88,7 +89,7 @@ const AddIteam = () => {
 
       <div className=" py-10 flex justify-center items-center ">
         <form onSubmit={handleSubmit(handleAdd)} className="">
-          <div>
+          {/* <div>
             {file.length > 0 &&
               file.map((item, index) => {
                 return (
@@ -110,7 +111,7 @@ const AddIteam = () => {
                   </div>
                 );
               })}
-          </div>
+          </div> */}
 
           <label
             class={`w-[370px] flex flex-col items-center px-2 py-4 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer  ease-linear transition-all duration-150 ${
@@ -123,7 +124,7 @@ const AddIteam = () => {
               type="file"
               {...register("img", {})}
               className="hidden"
-              onChange={uploadSingleFile}
+              // onChange={uploadSingleFile}
             />
           </label>
 

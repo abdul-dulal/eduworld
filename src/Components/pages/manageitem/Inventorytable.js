@@ -1,5 +1,6 @@
 import React from "react";
 import { AiTwotoneDelete } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const Inventorytable = ({ product, hotReload }) => {
   const { name, price, suppiler, quantity, _id } = product;
@@ -14,7 +15,8 @@ const Inventorytable = ({ product, hotReload }) => {
       .then((response) => response.json())
       .then((data) => {
         hotReload();
-        console.log("Success:", data);
+        console.log("Success:", id);
+        toast("Delete Successfully");
       });
   };
   return (

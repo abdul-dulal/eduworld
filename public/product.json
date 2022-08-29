@@ -46,5 +46,13 @@
     "suppiler": "amazon",
     "img": "https://2.bp.blogspot.com/-KvQRBME-wNI/W1Cz9wvSheI/AAAAAAAANBk/H3jvII4mSCA6IaxFJRE_Md2rdQ2cC5_EgCLcBGAs/w600/Withings_05.jpg",
     "description": "The Withings Activité Sapphire is a Swiss-made watch designed in France. It automatically tracks your activity 24/7 & syncs your data using Bluetooth"
+  },
+  {
+    "name": "Activity-Tracking Watch",
+    "price": 25,
+    "quantity": 15,
+    "suppiler": "amazon",
+    "img": "https://2.bp.blogspot.com/-KvQRBME-wNI/W1Cz9wvSheI/AAAAAAAANBk/H3jvII4mSCA6IaxFJRE_Md2rdQ2cC5_EgCLcBGAs/w600/Withings_05.jpg",
+    "description": "The Withings Activité Sapphire is a Swiss-made watch designed in France. It automatically tracks your activity 24/7 & syncs your data using Bluetooth"
   }
 ]

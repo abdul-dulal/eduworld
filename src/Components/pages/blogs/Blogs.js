@@ -27,7 +27,7 @@ const Blogs = () => {
         <title>Blogs</title>
         <meta name="description" content="Helmet application" />
       </Helmet>
-      <div></div>
+      <h1 className="text-2xl my-8 font-serif text-center">Blogs</h1>
       {loading ? (
         <div className="container grid lg:grid-cols-3 md:grid-cols-2 ">
           {blogs.map((blog) => (

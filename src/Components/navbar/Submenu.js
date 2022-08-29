@@ -13,10 +13,10 @@ const Submenu = () => {
     setShow(!show);
   };
   return (
-    <div className=" grid grid-cols-2 container lg:hidden md:hidden bg-[#035269]">
+    <div className=" grid grid-cols-2 container lg:hidden md:hidden">
       <div className="grid grid-cols-2 relative pt-5">
         <div className="">
-          <HiMenu className="text-3xl text-white" onClick={handleShow} />
+          <HiMenu className="text-3xl text-black" onClick={handleShow} />
           {show ? (
             <>
               <ul className=" gap-8 space-y-6 ">
@@ -28,10 +28,10 @@ const Submenu = () => {
                             padding: "10px",
                             background: "#7C3AED",
                             width: "100%",
-                            color: "white",
+                            color: "black",
                             borderRadius: "4px",
                           }
-                        : { color: "white" }
+                        : { color: "black" }
                     }
                     to={"/"}
                   >
@@ -40,7 +40,7 @@ const Submenu = () => {
                 </li>
                 <li className="text-sm font-semibold mt-2 ">
                   <NavLink
-                    to={"manage-item"}
+                    to={"manage-tems"}
                     className=""
                     style={({ isActive }) =>
                       isActive
@@ -51,10 +51,10 @@ const Submenu = () => {
                             color: "white",
                             borderRadius: "4px",
                           }
-                        : { color: "white" }
+                        : { color: "black" }
                     }
                   >
-                    Manage Item
+                    ManageItem
                   </NavLink>
                 </li>
 
@@ -70,7 +70,7 @@ const Submenu = () => {
                             color: "white",
                             borderRadius: "4px",
                           }
-                        : { color: "white" }
+                        : { color: "black" }
                     }
                   >
                     Add Item{" "}
@@ -88,7 +88,7 @@ const Submenu = () => {
                             color: "white",
                             borderRadius: "4px",
                           }
-                        : { color: "white" }
+                        : { color: "black" }
                     }
                   >
                     My Item
@@ -108,7 +108,7 @@ const Submenu = () => {
                             borderRadius: "4px",
                             marginBottom: "10px",
                           }
-                        : { color: "white" }
+                        : { color: "black" }
                     }
                   >
                     Blogs
@@ -146,7 +146,7 @@ const Submenu = () => {
                           borderRadius: "4px",
                           marginBottom: "10px",
                         }
-                      : { color: "white" }
+                      : { color: "black" }
                   }
                 >
                   Signup
