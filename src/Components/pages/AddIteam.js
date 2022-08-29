@@ -69,6 +69,7 @@ const AddIteam = () => {
             });
         }
       });
+    reset();
   };
 
   return (

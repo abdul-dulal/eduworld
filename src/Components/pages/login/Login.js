@@ -36,7 +36,9 @@ const Login = () => {
     signInWithEmailAndPassword(data.email, data.password);
     const res = await axios.post(
       `https://eduworld-backend.vercel.app/user/login`,
-      { email }
+      {
+        email,
+      }
     );
     localStorage.setItem("access", res.data);
   };
