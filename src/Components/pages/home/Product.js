@@ -5,7 +5,7 @@ import ProductDetails from "./ProductDetails";
 const Product = () => {
   const [products, setProduct] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/product/get-all")
+    fetch("https://eduworld-backend.vercel.app/product/get-all")
       .then((res) => res.json())
       .then((data) => setProduct(data.slice(0, 6)));
   }, []);
