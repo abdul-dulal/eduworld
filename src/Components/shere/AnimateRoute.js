@@ -12,6 +12,7 @@ import Signup from "../pages/signup/Signup";
 import { motion, AnimatePresence } from "framer-motion";
 import NotFound from "../pages/notfound/NotFound";
 import Readblog from "../pages/blogs/Readblog";
+import PrivateRoute from "./PrivateRoute";
 
 const AnimateRoute = () => {
   const location = useLocation();
@@ -25,7 +26,14 @@ const AnimateRoute = () => {
           <Route path="/my-item" element={<Myitem />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/myorder" element={<Myorder />} />
-          <Route path="/inventory/:id" element={<Inventory />} />
+          <Route
+            path="/inventory/:id"
+            element={
+              <PrivateRoute>
+                <Inventory />
+              </PrivateRoute>
+            }
+          />
           <Route path="/readblog/:id" element={<Readblog />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
