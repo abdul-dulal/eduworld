@@ -32,15 +32,16 @@ const Login = () => {
     errorElement = error.message;
   }
   const onSubmit = async (data) => {
-    const email = data.email;
     signInWithEmailAndPassword(data.email, data.password);
-    const res = await axios.post(
-      `https://eduworld-backend.vercel.app/user/login`,
+    const { data: result } = await axios.post(
+      "http://localhost:3000/user/login",
       {
-        email,
+        email: data.email,
+        password: data.password,
       }
     );
-    localStorage.setItem("access", res.data);
+    // console.log(result.token);
+    localStorage.setItem("token", result.token);
   };
   if (user) {
     navigate(from, { replace: true });
@@ -138,6 +139,7 @@ const Login = () => {
                   </span>
                 )}
               </label>
+              <p className="text-xl text-red-700">{errorElement}</p>
               <label>
                 <div className="flex justify-between my-3">
                   <p>Remember Me</p>

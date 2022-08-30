@@ -25,7 +25,7 @@ const Navbar = () => {
                     ? {
                         border: "2px",
                         padding: "10px",
-                        background: "#7C3AED",
+                        background: "#4B5563",
                         color: "white",
                         borderRadius: "4px",
                       }
@@ -48,7 +48,7 @@ const Navbar = () => {
                         ? {
                             border: "2px",
                             padding: "10px",
-                            background: "#7C3AED",
+                            background: "#4B5563",
                             color: "white",
                             borderRadius: "4px",
                           }
@@ -66,7 +66,7 @@ const Navbar = () => {
                         ? {
                             border: "2px",
                             padding: "10px",
-                            background: "#7C3AED",
+                            background: "#4B5563",
                             color: "white",
                             borderRadius: "4px",
                           }
@@ -84,7 +84,7 @@ const Navbar = () => {
                         ? {
                             border: "2px",
                             padding: "10px",
-                            background: "#7C3AED",
+                            background: "#4B5563",
                             color: "white",
                             borderRadius: "4px",
                           }
@@ -105,7 +105,7 @@ const Navbar = () => {
                     ? {
                         border: "2px",
                         padding: "10px",
-                        background: "#7C3AED",
+                        background: "#4B5563",
                         color: "white",
                         borderRadius: "4px",
                       }
@@ -129,7 +129,7 @@ const Navbar = () => {
                       ? {
                           border: "2px",
                           padding: "10px",
-                          background: "#7C3AED",
+                          background: "#4B5563",
                           color: "white",
                           borderRadius: "4px",
                         }

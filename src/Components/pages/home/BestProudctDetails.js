@@ -24,7 +24,7 @@ const BestProudctDetails = ({ product }) => {
             <p className="text-[18px font-serif]">Supplier: {suppiler}</p>
             <button
               onClick={() => navigate(`/inventory/${_id}`)}
-              className="border border-gray-600 h-10 w-32 text-gray-600 font-semibold rounded"
+              className="border-2 border-gray-600 h-10 w-32 text-gray-600 font-semibold rounded"
             >
               Update
             </button>

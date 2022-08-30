@@ -14,10 +14,9 @@ const Home = () => {
         <meta name="description" content="Helmet application" />
       </Helmet>
 
-      <motion.div
+      <div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
         exit={{ opacity: 0 }}
       >
         <Slider />
@@ -25,7 +24,7 @@ const Home = () => {
         <Product />
         <Details />
         <Bestproduct />
-      </motion.div>
+      </div>
     </div>
   );
 };

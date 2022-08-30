@@ -15,9 +15,7 @@ const Myitem = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://eduworld-backend.vercel.app/product/get-myItems?user=${user?.email}`
-      )
+      .get(`http://localhost:3000/product/get-myItems?user=${user?.email}`)
       .then((res) => {
         setmyItems(res.data);
         setLoading(true);

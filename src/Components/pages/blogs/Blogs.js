@@ -9,12 +9,10 @@ const Blogs = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`https://eduworld-backend.vercel.app/blog/get-allBlogs`)
-      .then((res) => {
-        setBlog(res.data);
-        setLoading(true);
-      });
+    axios.get(`http://localhost:3000/blog/get-allBlogs`).then((res) => {
+      setBlog(res.data);
+      setLoading(true);
+    });
   }, []);
   return (
     <motion.div

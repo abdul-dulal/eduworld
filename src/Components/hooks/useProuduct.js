@@ -7,9 +7,7 @@ const useProuduct = () => {
     data: products,
     refetch: hotReload,
   } = useQuery("repoData", () =>
-    fetch("https://eduworld-backend.vercel.app/product/get-all").then((res) =>
-      res.json()
-    )
+    fetch("http://localhost:3000/product/get-all").then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;

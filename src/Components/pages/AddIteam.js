@@ -56,7 +56,7 @@ const AddIteam = () => {
             quantity: data.quantity,
           };
 
-          fetch("https://eduworld-backend.vercel.app/product/post-product", {
+          fetch("http://localhost:3000/product/post-product", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

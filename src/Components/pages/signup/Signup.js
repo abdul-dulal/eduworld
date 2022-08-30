@@ -11,6 +11,7 @@ import Sociallogin from "../../shere/Sociallogin";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { toast } from "react-toastify";
+import axios from "axios";
 const Register = () => {
   const [agree, setAgree] = useState(false);
 
@@ -26,7 +27,13 @@ const Register = () => {
 
   const navigate = useNavigate();
   const onSubmit = async (data) => {
-    createUserWithEmailAndPassword(data.email, data.password);
+    const email = data.email;
+    const password = data.password;
+    createUserWithEmailAndPassword(email, password);
+    await axios.post(`http://localhost:3000/user/signup`, {
+      email,
+      password,
+    });
 
     reset();
   };
