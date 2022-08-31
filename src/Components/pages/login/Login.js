@@ -34,13 +34,13 @@ const Login = () => {
   const onSubmit = async (data) => {
     signInWithEmailAndPassword(data.email, data.password);
     const { data: result } = await axios.post(
-      "http://localhost:3000/user/login",
+      "https://eduworld-backend.vercel.app/user/login",
       {
         email: data.email,
         password: data.password,
       }
     );
-    // console.log(result.token);
+
     localStorage.setItem("token", result.token);
   };
   if (user) {

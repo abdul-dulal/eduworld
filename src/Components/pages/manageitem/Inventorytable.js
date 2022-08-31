@@ -3,9 +3,9 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 const Inventorytable = ({ product, hotReload }) => {
-  const { name, price, suppiler, quantity, _id } = product;
+  const { name, price, suppiler, quantity, _id, img } = product;
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/product/delete-item/${id}`, {
+    fetch(`https://eduworld-backend.vercel.app/product/delete-item/${_id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -15,13 +15,16 @@ const Inventorytable = ({ product, hotReload }) => {
       .then((response) => response.json())
       .then((data) => {
         hotReload();
-        console.log("Success:", id);
+        console.log("Success:", data);
         toast("Delete Successfully");
       });
   };
   return (
     <tr className="text-[20px] odd">
       <td>{name}</td>
+      <td>
+        <img src={img} className="w-28 h-20" alt="" />
+      </td>
       <td>{price}</td>
       <td>{suppiler}</td>
       <td>{quantity}</td>

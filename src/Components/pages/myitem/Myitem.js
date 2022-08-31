@@ -12,14 +12,27 @@ const Myitem = () => {
   const navigate = useNavigate();
 
   const [user] = useAuthState(auth);
+  // .get()
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/product/get-myItems?user=${user?.email}`)
-      .then((res) => {
-        setmyItems(res.data);
+    const item = async () => {
+      const url = `https://eduworld-backend.vercel.app/product/get-myItems?user=${user?.email}`;
+      try {
+        const { data } = await axios.get(url, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        setmyItems(data.slice(0, 6));
         setLoading(true);
-      });
+      } catch (error) {
+        // if (error.response?.status === 401 || error.response.status === 403) {
+        //   // signOut(auth);
+        //   // navigate("/login");
+        // }
+      }
+    };
+    item();
   }, []);
 
   return (

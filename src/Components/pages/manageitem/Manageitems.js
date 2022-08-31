@@ -27,10 +27,11 @@ const Manageitems = () => {
         Add New Item
       </Link>
       <div class="overflow-x-auto container py-10">
-        <table class="table table-zebra w-full">
+        <table class="table  w-full">
           <thead>
             <tr>
               <th className="text-[16px] font-serif">Name</th>
+              <th className="text-[16px] font-serif">Image</th>
               <th className="text-[16px] font-serif"> Price</th>
               <th className="text-[16px] font-serif">Quantity</th>
               <th className="text-[16px] font-serif">Supplier</th>

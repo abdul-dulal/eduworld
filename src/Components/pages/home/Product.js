@@ -5,23 +5,9 @@ import ProductDetails from "./ProductDetails";
 const Product = () => {
   const [products, setProduct] = useState([]);
   useEffect(() => {
-    const item = async () => {
-      const url = `http://localhost:3000/product/get-all`;
-      try {
-        const { data } = await axios.get(url, {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-        setProduct(data.slice(0, 6));
-      } catch (error) {
-        if (error.response.status === 401 || error.response.status === 403) {
-          // signOut(auth);
-          // navigate("/login");
-        }
-      }
-    };
-    item();
+    axios
+      .get("https://eduworld-backend.vercel.app/product/get-all")
+      .then((res) => setProduct(res.data.slice(0, 6)));
   }, []);
 
   return (

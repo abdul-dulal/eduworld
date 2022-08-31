@@ -4,8 +4,8 @@ import auth from "../../firebaseInit";
 
 const Logout = () => {
   const handleLogout = () => {
-    localStorage.removeItem("token");
     signOut(auth);
+    localStorage.removeItem("token");
   };
   return (
     <div>
