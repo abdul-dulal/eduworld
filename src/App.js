@@ -13,7 +13,7 @@ function App() {
         <title> Reprizo</title>
       </Helmet>
       <Navbar />
-      {/* https://eduworld-backend.vercel.app/get-all" */}
+      {/* http://localhost:3000/get-all" */}
       <AnimateRoute />
       <Footer />
       <ToastContainer />
