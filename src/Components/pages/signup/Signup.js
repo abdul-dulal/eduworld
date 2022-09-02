@@ -30,7 +30,7 @@ const Register = () => {
     const email = data.email;
     const password = data.password;
     createUserWithEmailAndPassword(email, password);
-    await axios.post(`http://localhost:3000/user/signup`, {
+    await axios.post(`https://eduworld-backend.vercel.app/user/signup`, {
       email,
       password,
     });
@@ -49,7 +49,7 @@ const Register = () => {
   return (
     <>
       <motion.div
-        className=" grid lg:grid-cols-2 md:grid-cols-2 gap-[1px] lg:px-48  bg-gray-300 "
+        className="  lg:px-48  bg-gray-300 py-8 md:px-10 px-5"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -58,9 +58,7 @@ const Register = () => {
           <title> Signup</title>
           <meta name="description" content="Helmet application" />
         </Helmet>
-        <div className="my-6">
-          <Sociallogin />
-        </div>
+        <div className="my-6"></div>
         <div className="bg-white shadow-lg my-6">
           <div className="  w-full flex items-center justify-center py-20">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -153,12 +151,14 @@ const Register = () => {
                   </span>
                 )}
               </label>
+
               <label>
                 <input
                   type="checkbox"
                   className="my-4"
                   onClick={() => setAgree(!agree)}
                 />
+
                 <span
                   className={`ml-3 ${
                     agree ? "text-green-700" : "text-red-700"
@@ -176,6 +176,8 @@ const Register = () => {
                   !agree ? "cursor-not-allowed" : "cursor-pointer"
                 } `}
               />
+              <div class="divider">OR</div>
+              <Sociallogin />
               <p className="text-center mt-5">
                 You Have Already An Account?
                 <Link to={"/login"} className="text-purple-600 ml-2 ">

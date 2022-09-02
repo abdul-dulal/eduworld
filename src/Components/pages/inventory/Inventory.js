@@ -16,18 +16,20 @@ const Inventory = () => {
     formState: { errors },
   } = useForm();
   useEffect(() => {
-    axios.get(`http://localhost:3000/product/single/${id}`).then((res) => {
-      setInvetory(res.data);
-      console.log();
-      setLoading(true);
-    });
+    axios
+      .get(`https://eduworld-backend.vercel.app/product/single/${id}`)
+      .then((res) => {
+        setInvetory(res.data);
+        console.log();
+        setLoading(true);
+      });
   }, []);
 
   const handleDeliverd = () => {
     const newQuantity = inventory?.quantity - 1;
     const updateQuantity = { ...inventory, quantity: newQuantity };
     setInvetory(updateQuantity);
-    fetch(`http://localhost:3000/product/quantity/${id}`, {
+    fetch(`https://eduworld-backend.vercel.app/product/quantity/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -44,7 +46,7 @@ const Inventory = () => {
     };
     console.log(quantity);
     setInvetory(upQuantity);
-    fetch(`http://localhost:3000/product/quantity/${id}`, {
+    fetch(`https://eduworld-backend.vercel.app/product/quantity/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

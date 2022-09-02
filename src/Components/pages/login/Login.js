@@ -34,7 +34,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     signInWithEmailAndPassword(data.email, data.password);
     const { data: result } = await axios.post(
-      "http://localhost:3000/user/login",
+      "https://eduworld-backend.vercel.app/user/login",
       {
         email: data.email,
         password: data.password,
@@ -52,14 +52,12 @@ const Login = () => {
   }
   return (
     <>
-      <div className=" grid lg:grid-cols-2 md:grid-cols-2 gap-[1px] lg:px-48  bg-gray-300 ">
+      <div className="  lg:px-48  bg-gray-300 py-8 md:px-10 px-5">
         <Helmet>
           <title>Login</title>
           <meta name="description" content="Helmet application" />
         </Helmet>
-        <div className="my-6">
-          <Sociallogin />
-        </div>
+        <div className="my-6"></div>
         <div className="bg-white shadow-lg my-6">
           <div className="  w-full flex items-center justify-center h-screen">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -139,6 +137,7 @@ const Login = () => {
                   </span>
                 )}
               </label>
+
               <p className="text-xl text-red-700">{errorElement}</p>
               <label>
                 <div className="flex justify-between my-3">
@@ -152,10 +151,12 @@ const Login = () => {
                 value="Register"
                 className={`lg:w-96 w-80 h-14 bg-[#035269] text-white rounded-md cursor-pointer `}
               />
+              <div class="divider">OR</div>
+              <Sociallogin />
               <p className="text-center mt-4">
                 Don't have an account? Register here
                 <Link to={"/signup"} className="text-purple-600 ml-2">
-                  Login
+                  Singup
                 </Link>
               </p>
             </form>

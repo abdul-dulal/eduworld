@@ -6,7 +6,7 @@ const Product = () => {
   const [products, setProduct] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/product/get-all")
+      .get("https://eduworld-backend.vercel.app/product/get-all")
       .then((res) => setProduct(res.data.slice(0, 6)));
   }, []);
 
