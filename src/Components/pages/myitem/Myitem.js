@@ -86,8 +86,8 @@ const Myitem = () => {
               ))}
             </div>
           ) : (
-            <Loading />
-          )}{" "}
+            ""
+          )}
         </>
       ) : (
         <h1 className="text-2xl my-28 font-serif text-center">
