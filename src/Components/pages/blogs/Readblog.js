@@ -9,12 +9,10 @@ const Readblog = () => {
   const { img, des, title } = singleBlogs;
 
   useEffect(() => {
-    axios
-      .get(`https://eduworld-backend.vercel.app/blog//signle-blog/${id}`)
-      .then((res) => {
-        setSingleBlogs(res.data);
-        setLoading(true);
-      });
+    axios.get(`http://localhost:3000/blog//signle-blog/${id}`).then((res) => {
+      setSingleBlogs(res.data);
+      setLoading(true);
+    });
   }, []);
   return (
     <div>

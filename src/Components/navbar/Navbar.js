@@ -37,65 +37,63 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            {user && (
-              <>
-                <li className="text-sm font-semibold mt-2 ">
-                  <NavLink
-                    to={"manage-tems"}
-                    className=""
-                    style={({ isActive }) =>
-                      isActive
-                        ? {
-                            border: "2px",
-                            padding: "10px",
-                            background: "#4B5563",
-                            color: "white",
-                            borderRadius: "4px",
-                          }
-                        : { color: "black" }
-                    }
-                  >
-                    Manage Item
-                  </NavLink>
-                </li>
-                <li className="text-sm font-semibold mt-2">
-                  <NavLink
-                    to={"add-item"}
-                    style={({ isActive }) =>
-                      isActive
-                        ? {
-                            border: "2px",
-                            padding: "10px",
-                            background: "#4B5563",
-                            color: "white",
-                            borderRadius: "4px",
-                          }
-                        : { color: "black" }
-                    }
-                  >
-                    Add Item
-                  </NavLink>
-                </li>
-                <li className="text-sm font-semibold mt-2">
-                  <NavLink
-                    to={"my-item"}
-                    style={({ isActive }) =>
-                      isActive
-                        ? {
-                            border: "2px",
-                            padding: "10px",
-                            background: "#4B5563",
-                            color: "white",
-                            borderRadius: "4px",
-                          }
-                        : { color: "black" }
-                    }
-                  >
-                    My Item
-                  </NavLink>
-                </li>
-              </>
-            )}
+            <>
+              <li className="text-sm font-semibold mt-2 ">
+                <NavLink
+                  to={"manage-tems"}
+                  className=""
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          border: "2px",
+                          padding: "10px",
+                          background: "#4B5563",
+                          color: "white",
+                          borderRadius: "4px",
+                        }
+                      : { color: "black" }
+                  }
+                >
+                  Manage Item
+                </NavLink>
+              </li>
+              <li className="text-sm font-semibold mt-2">
+                <NavLink
+                  to={"add-item"}
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          border: "2px",
+                          padding: "10px",
+                          background: "#4B5563",
+                          color: "white",
+                          borderRadius: "4px",
+                        }
+                      : { color: "black" }
+                  }
+                >
+                  Add Item
+                </NavLink>
+              </li>
+              <li className="text-sm font-semibold mt-2">
+                <NavLink
+                  to={"my-item"}
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          border: "2px",
+                          padding: "10px",
+                          background: "#4B5563",
+                          color: "white",
+                          borderRadius: "4px",
+                        }
+                      : { color: "black" }
+                  }
+                >
+                  My Item
+                </NavLink>
+              </li>
+            </>
 
             <li className="text-sm font-semibold mt-2">
               <NavLink

@@ -7,12 +7,10 @@ const Bestproduct = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`https://eduworld-backend.vercel.app/product/get-all`)
-      .then((res) => {
-        setProduct(res.data.slice(0, 4));
-        setLoading(true);
-      });
+    axios.get(`http://localhost:3000/product/get-all`).then((res) => {
+      setProduct(res.data.slice(0, 4));
+      setLoading(true);
+    });
   }, []);
 
   return (

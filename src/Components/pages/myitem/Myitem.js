@@ -16,7 +16,7 @@ const Myitem = () => {
 
   useEffect(() => {
     const item = async () => {
-      const url = `https://eduworld-backend.vercel.app/product/get-myItems?user=${user?.email}`;
+      const url = `http://localhost:3000/product/get-myItems?user=${user?.email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -86,7 +86,7 @@ const Myitem = () => {
               ))}
             </div>
           ) : (
-            ""
+            <Loading />
           )}
         </>
       ) : (

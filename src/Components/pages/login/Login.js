@@ -34,7 +34,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     signInWithEmailAndPassword(data.email, data.password);
     const { data: result } = await axios.post(
-      "https://eduworld-backend.vercel.app/user/login",
+      "http://localhost:3000/user/login",
       {
         email: data.email,
         password: data.password,

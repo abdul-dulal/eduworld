@@ -21,11 +21,39 @@ const AnimateRoute = () => {
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
-          <Route path="/manage-tems" element={<Manageitems />} />
-          <Route path="/add-item" element={<AddIteam />} />
-          <Route path="/my-item" element={<Myitem />} />
+          <Route
+            path="/manage-tems"
+            element={
+              <PrivateRoute>
+                <Manageitems />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/add-item"
+            element={
+              <PrivateRoute>
+                <AddIteam />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/my-item"
+            element={
+              <PrivateRoute>
+                <Myitem />
+              </PrivateRoute>
+            }
+          />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="/myorder" element={<Myorder />} />
+          <Route
+            path="/myorder"
+            element={
+              <PrivateRoute>
+                <Myorder />
+              </PrivateRoute>
+            }
+          />
           <Route
             path="/inventory/:id"
             element={

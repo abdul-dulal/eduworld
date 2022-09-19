@@ -8,7 +8,7 @@ const Myorder = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`https://eduworld-backend.vercel.app/my-order?email=${user?.email}`)
+    fetch(`http://localhost:3000/my-order?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, []);
