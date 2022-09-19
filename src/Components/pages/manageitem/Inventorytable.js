@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const Inventorytable = ({ product, hotReload }) => {
   const { name, price, suppiler, quantity, _id, img } = product;
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/product/delete-item/${_id}`, {
+    fetch(`https://eduworld-backend.vercel.app/product/delete-item/${_id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

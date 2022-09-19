@@ -30,7 +30,7 @@ const Register = () => {
     const email = data.email;
     const password = data.password;
     createUserWithEmailAndPassword(email, password);
-    await axios.post(`http://localhost:3000/user/signup`, {
+    await axios.post(`https://eduworld-backend.vercel.app/user/signup`, {
       email,
       password,
     });
